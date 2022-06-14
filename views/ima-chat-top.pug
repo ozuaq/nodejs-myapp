@@ -1,0 +1,13 @@
+extends base
+
+block content 
+    form.my-3(method="post" action="/ima-chat")
+        div(class="position-relative")
+            .row
+                .col-10
+                    label.form-label(for='roomName') ルーム名
+                    input.form-control(type="text" name="roomName")
+                    label.form-label(for='userName') ユーザ名
+                    input.form-control(type="text" name="userName")
+                .col-2
+                    button#join-room-form(type='submit' class="btn btn-primary position-absolute bottom-0") Join

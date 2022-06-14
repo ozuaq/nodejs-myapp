@@ -6,8 +6,10 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var imaChatRouter = require('./routes/ima-chat');
+let imaChatTopRouter = require('./routes/ima-chat-top');
+let imaChatRouter = require('./routes/ima-chat');
 let sampleRouter = require('./routes/sample');
+let homeRouter = require('./routes/home');
 
 var app = express();
 const { Server } = require("socket.io");
@@ -26,17 +28,12 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
+// app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/ima-chat-top', imaChatTopRouter);
 app.use('/ima-chat', imaChatRouter);
 app.use('/sample', sampleRouter);
-
-/*
-// socket.io
-io.on('connection', (socket) => {
-
-});
-*/
+app.use('/', homeRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
