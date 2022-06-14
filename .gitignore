@@ -4,3 +4,6 @@
 
 # local db
 *.db
+
+# local others
+.DS_Store
