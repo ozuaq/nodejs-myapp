@@ -29,14 +29,14 @@ function sendChat() {
     messageText.innerHTML = data.message;
 
     messageDiv.className =
-      "message d-flex flex-row-reverse align-items-start mb-4 text-white";
-    iconDiv.className = "message-icon rounded bg-primary fs-3";
-    messageText.className = "message-text p-2 me-2 mb-0 bg-primary";
+      "d-flex flex-row-reverse mb-4 text-white";
+    iconDiv.className = "rounded bg-primary fs-3";
+    messageText.className = "p-2 me-2 mb-0 bg-primary";
 
-    messagesBox.appendChild(messageDiv);
-    messageDiv.appendChild(iconDiv);
     iconDiv.appendChild(iconText);
+    messageDiv.appendChild(iconDiv);
     messageDiv.appendChild(messageText);
+    messagesBox.appendChild(messageDiv);
   }
 }
 
@@ -66,21 +66,13 @@ socket.on("connect", () => {
     messageText.innerHTML = data.message;
 
     messageDiv.className =
-      "message d-flex flex-row align-items-start mb-4 text-white";
-    iconDiv.className = "message-icon rounded bg-secondary fs-3";
-    messageText.className = "message-text p-2 me-2 mb-0 bg-secondary";
+      "d-flex flex-row mb-4 text-white";
+    iconDiv.className = "rounded bg-secondary fs-3";
+    messageText.className = "p-2 ms-2 mb-0 bg-secondary";
 
-    messagesBox.appendChild(messageDiv);
-    messageDiv.appendChild(iconDiv);
     iconDiv.appendChild(iconText);
+    messageDiv.appendChild(iconDiv);
     messageDiv.appendChild(messageText);
+    messagesBox.appendChild(messageDiv);
   });
 });
-
-/*
-.message.d-flex.flex-row-reverse.align-items-start.mb-4.text-white
-      .message-icon.rounded.bg-primary.fs-3 
-        .mx-1 piyo 
-      //  .message-icon 
-      p.message-text.p-2.me-2.mb-0.bg-primary.
-*/

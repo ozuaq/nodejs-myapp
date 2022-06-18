@@ -1,6 +1,7 @@
 extends base
 
 block content 
+    h1 今だけチャット
     form.my-3(method="post" action="/ima-chat")
         div(class="position-relative")
             .row
@@ -11,3 +12,8 @@ block content
                     input.form-control(type="text" name="userName")
                 .col-2
                     button#join-room-form(type='submit' class="btn btn-primary position-absolute bottom-0") Join
+    div(id="rooms")
+
+block script 
+    script(src='/socket.io/socket.io.js')
+    script(src='/javascripts/ima-chat-top.js')

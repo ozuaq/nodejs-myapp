@@ -4,15 +4,14 @@ block css
   link(rel='stylesheet', href='/stylesheets/scroll-container.css')
 
 block content
-  h1 今だけチャット
-  h5
+  h1 
     span(id="userName")= userName
     | さん
 
     span(id="roomName")= roomName
     | へようこそ！
 
-  .chat.bg-white.p-4.border.border-dark#messagesBox
+  .bg-light.p-4.border.border-dark#messagesBox
     
   form.my-3
     .row
