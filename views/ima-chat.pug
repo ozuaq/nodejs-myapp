@@ -1,7 +1,7 @@
 extends base
 
 block css 
-  link(rel='stylesheet', href='/stylesheets/scroll-container.css')
+  // link(rel='stylesheet', href='/stylesheets/scroll-container.css')
 
 block content
   h1 
@@ -9,7 +9,9 @@ block content
     | さん
 
     span(id="roomName")= roomName
-    | へようこそ！
+    | へようこそ！ アクティブ人数：
+
+    span(id="activeNumber")
 
   .bg-light.p-4.border.border-dark#messagesBox
     
