@@ -3,7 +3,7 @@ var router = express.Router();
 
 
 router.get('/', function(req, res, next) {
-  res.render('sample');
+  res.render('ima-chat-description', { title: 'ima-chat-description' });
 });
 
 module.exports = router;
