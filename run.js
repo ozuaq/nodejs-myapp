@@ -28,8 +28,8 @@ io.on("connection", (socket) => {
   socket.on("chat message", (data) => {
     roomToMessages
       .get(data.roomName)
-      .push({ userName: data.userName, message: data.message });
-    io.to(data.roomName).emit("receive", {userId: data.userId,  messages: data.messages});
+      .push({userName: data.userName, message: data.message});
+    io.to(data.roomName).emit("receive", {userId: data.userId, userName: data.userName, message: data.message});
   });
 
 
