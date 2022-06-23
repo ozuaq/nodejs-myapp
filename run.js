@@ -4,34 +4,41 @@ const server = http.createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server);
 const roomToMessages = new Map();
+const userIdToRoomName = new Map();
+
 
 io.on("connection", (socket) => {
   console.log("sever-socketID: " + socket.id);
-
-  socket.on("chat message", (data) => {
-    // console.log('message: ' + JSON.stringify(data));
-    roomToMessages
-      .get(data.roomName)
-      .push({ userName: data.userName, message: data.message });
-    data.activeNumber = getRoomToActiveNumber(io).get(data.roomName);
-    socket.to(data.roomName).emit("receive", data);
-  });
-
-  socket.on("join", (data) => {
+  
+  socket.on("join", (data) =>{
     socket.join(data.roomName);
-    // console.log('join'+data.userId);
+    userIdToRoomName.set(data.userId, data.roomName);
+
     if (!roomToMessages.has(data.roomName)) {
       roomToMessages.set(data.roomName, []);
     }
-    // userId messages activeNumber
-    socket.emit("init", { userId: data.userId, messages: roomToMessages.get(data.roomName), activeNumber: getRoomToActiveNumber(io).get(data.roomName) });
+  
+    io.to(data.roomName).emit("addMember", {
+      userId: data.userId,
+      messages: roomToMessages.get(data.roomName),
+      activeNumber: getRoomToActiveNumber(io).get(data.roomName)
+    });
   });
 
+  socket.on("chat message", (data) => {
+    roomToMessages
+      .get(data.roomName)
+      .push({ userName: data.userName, message: data.message });
+    io.to(data.roomName).emit("receive", {userId: data.userId,  messages: data.messages});
+  });
+
+
   socket.on("rooms", () => {
-    // console.log('receive rooms');
     let rooms = [];
     for (let [roomName, activeNumber] of getRoomToActiveNumber(io)) {
-      rooms.push({ roomName: roomName, activeNumber: activeNumber });
+      if(roomName){
+        rooms.push({ roomName: roomName, activeNumber: activeNumber });
+      }
     }
     socket.emit("chat-top", { rooms: rooms });
   });
@@ -44,7 +51,17 @@ io.on("connection", (socket) => {
       }
     }
     console.log("アクティブなルーム(処理後)は" + roomToMessages.size);
+    
+    console.log("disconnect"+socket.id);
+    let roomName = userIdToRoomName.get(socket.id);
+    userIdToRoomName.delete(socket.id);
+    let activeNumber = getRoomToActiveNumber(io).get(roomName);
+    if(getRoomToActiveNumber(io).get(roomName)){
+      console.log("activeNumber: "+activeNumber);
+      io.to(roomName).emit("updateActiveNumber", {activeNumber: activeNumber});
+    }
   });
+
 });
 
 server.listen(3000, () => {
@@ -57,9 +74,7 @@ function getRoomToActiveNumber(io) {
   let roomToActiveNumber = new Map();
   for (const room of filtered) {
     roomToActiveNumber.set(room[0], room[1].size);
-    // console.log("room[0]: "+room[0]+"room[1]: "+room[1].size);
   }
-  // console.log(rooms);
 
   return roomToActiveNumber;
 }
