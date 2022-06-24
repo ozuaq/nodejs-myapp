@@ -11,6 +11,7 @@ let imaChatRouter = require('./routes/ima-chat');
 let sampleRouter = require('./routes/sample');
 let homeRouter = require('./routes/home');
 let imaChatDescription = require('./routes/ima-chat-description');
+let siteDescription = require('./routes/site-description');
 
 var app = express();
 const { Server } = require("socket.io");
@@ -36,6 +37,7 @@ app.use('/ima-chat', imaChatRouter);
 app.use('/sample', sampleRouter);
 app.use('/', homeRouter);
 app.use('/ima-chat-description', imaChatDescription);
+app.use('/site-description', siteDescription);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

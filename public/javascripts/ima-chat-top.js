@@ -47,7 +47,7 @@ function createRoom(data) {
   cardTitle.innerHTML = "ルーム：" + data.roomName;
   cardText.id = data.roomName + "cardText";
   cardText.className = "card-text";
-  cardText.innerHTML = "アクティブ人数：" + data.activeNumber;
+  cardText.innerHTML = "参加人数：" + data.activeNumber;
   joinBotton.className = "btn btn-primary";
   joinBotton.type = "submit";
   joinBotton.innerHTML = "Join";
@@ -69,5 +69,5 @@ function deleteRoom(data) {
 
 function updateRoom(data) {
     let cardText = document.getElementById((data.roomName + "cardText"));
-    cardText.innerHTML = "アクティブ人数：" + data.activeNumber;
+    cardText.innerHTML = "参加人数：" + data.activeNumber;
 }
