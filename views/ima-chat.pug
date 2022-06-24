@@ -18,10 +18,9 @@ block content
   form.my-3
     .row
       .col-10
-        // label.form-label(for='exampleFormControlTextarea1')
         textarea.form-control#chat-text(rows='3')
       .col-2
-        button.btn.btn-primary.mb-3#chat-form(type='button' onclick='sendChat()') post 
+        button.btn.btn-primary#chat-form(type='button' onclick='sendChat()') post 
 
 block script 
   script(src='/socket.io/socket.io.js')

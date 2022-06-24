@@ -42,13 +42,13 @@ function receiveChat(data) {
   messageText.innerHTML = data.message;
 
   if(!(userId == data.userId)){
-    messageDiv.className = "d-flex flex-row mb-4 text-white";
+    messageDiv.className = "d-flex flex-row mb-4 text-wrap text-white";
     iconDiv.className = "rounded bg-secondary fs-3";
     messageText.className = "p-2 ms-2 mb-0 bg-secondary";
   }else{
-    messageDiv.className = "d-flex flex-row-reverse mb-4 text-white";
+    messageDiv.className = "d-flex flex-row-reverse mb-4 text-wrap text-white";
     iconDiv.className = "rounded bg-primary fs-3";
-    messageText.className = "p-2 me-2 mb-0 bg-primary";
+    messageText.className = "p-2 me-2 mb-0 text-wrap bg-primary";
   }
   iconDiv.appendChild(iconText);
   messageDiv.appendChild(iconDiv);
