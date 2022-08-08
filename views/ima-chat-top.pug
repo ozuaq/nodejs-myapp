@@ -1,0 +1,22 @@
+extends base
+
+block content 
+    h1 今だけチャット
+        ul
+            li
+                a(class="btn btn-primary my-2" href='/nodejs-works/ima-chat-description' role="button") アプリの説明
+    form.my-3(method="post" action="/nodejs-works/ima-chat")
+        div(class="position-relative")
+            .row
+                .col-10
+                    label.form-label(for='roomName') ルーム名
+                    input.form-control(type="text" name="roomName")
+                    label.form-label(for='userName') ユーザ名
+                    input.form-control(type="text" name="userName")
+                .col-2
+                    button#join-room-form(type='submit' class="btn btn-primary position-absolute bottom-0") Join
+    div(id="rooms")
+
+block script 
+    script(src='/socket.io/socket.io.js')
+    script(src='/javascripts/ima-chat-top.js')

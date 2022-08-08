@@ -1,0 +1,30 @@
+extends base
+
+block css 
+  // link(rel='stylesheet' href='/stylesheets/scroll-container.css')
+
+block content
+  ul
+    li
+      a(class="btn btn-primary my-2" href='/nodejs-works/ima-chat-top' role="button") アプリTop 
+  h1 
+    span(id="userName")= userName
+    | さん、「
+
+    span(id="roomName")= roomName
+    | 」へようこそ！ 参加人数：
+
+    span(id="activeNumber")
+
+  .bg-light.p-4.border.border-dark#messagesBox
+
+  form.my-3
+    .row
+      .col-10
+        textarea.form-control#chat-text(rows='3')
+      .col-2
+        button.btn.btn-primary#chat-form(type='button' onclick='sendChat()') post 
+
+block script 
+  script(src='/socket.io/socket.io.js')
+  script(src='/javascripts/ima-chat.js')

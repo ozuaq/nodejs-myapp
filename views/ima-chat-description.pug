@@ -1,0 +1,34 @@
+extends base
+
+block content 
+    ul
+        li
+            a(class="btn btn-primary my-2" href='/nodejs-works/ima-chat-top' role="button") アプリTop 
+    h1 アプリの説明
+    p(class="fw-bold") 今だけの人とチャットをしてみませんか？
+    h2 できること
+    img(src="/images/ima-chat-description/create-room.png" class="img-fluid border border-gray" alt="create chat room")
+    p(class="mb-3") アプリTopで好きなルーム名とユーザ名を入力してルームを作成します
+    img(src="/images/ima-chat-description/room.png" class="img-fluid border border-gray mt-3" alt="chat room")
+    p(class="mb-3") 
+        | ルームに入ると自分のアイコンとメッセージは右、他の人は左に表示されます
+        br
+        span(class="text-primary fw-bold") 注目ポイント：
+        br
+        span(class="fw-bold") ページを更新しなくても、
+        | 誰かがルームに入退室すると、ルームの参加人数が更新されます
+    img(src="/images/ima-chat-description/room-list.png" class="img-fluid border border-gray mt-3" alt="chat room list")
+    p(class="mb-3")
+        | アプリTopでは作成されたルーム一覧が表示され、他のユーザはそこに参加できます
+        br
+        span(class="text-primary fw-bold") 注目ポイント：
+        br
+        span(class="fw-bold") ページを更新しなくても、
+        | 誰かがルームに入退室すると、ルームの参加人数が更新されます
+        br
+        | 新しいルームが作られる、またはルームの参加人数が0人になり、ルームが削除されるとルーム一覧が更新されます
+    img(src="/images/ima-chat-description/join-room-midstream.png" class="img-fluid border border-gray mt-3" alt="join chat room midstream")
+    p(class="mb-3")
+        span(class="text-primary fw-bold") 注目ポイント：
+        br
+        | ルームに途中参加しても、これまでのやりとりを見られます
