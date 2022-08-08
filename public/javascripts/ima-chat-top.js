@@ -35,7 +35,7 @@ function createRoom(data) {
   card.id = data.roomName;
   card.className = "card mb-3 p-2 border border-dark";
   form.method = "post";
-  form.action = "/nodejs-works/ima-chat";
+  form.action = "/ima-chat";
   roomName.type = "hidden";
   roomName.name = "roomName";
   roomName.value = data.roomName;
