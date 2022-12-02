@@ -18,6 +18,10 @@ router.get('/ima-chat-description', function(req, res, next) {
   res.render('ima-chat-description', { title: 'ima-chat-description' });
 });
 
+router.get('/research', function(req, res, next) {
+  res.render('research', { title: 'research' });
+});
+
 router.post('/ima-chat', function(req, res, next) {
   let roomName = req.body.roomName;
   let userName = req.body.userName;

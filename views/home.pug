@@ -1,15 +1,38 @@
 extends base
 
+block css
+  link(href="/stylesheets/star-rating.css" rel="stylesheet")
+
 block content 
   h1 ozayoshiの作品
   ul
     li
-      a(class="btn btn-success my-2" href='https://github.com/ozuaq/nodejs-myapp' role="button") ソースコード
+      a(class="btn btn-primary my-2" href='https://github.com/ozuaq/nodejs-myapp' role="button") ソースコード
     li
       a(class="btn btn-primary my-2" href='/site-description' role="button") サイトの説明
   h2 アプリ一覧
   ul
     li
       a(class="btn btn-primary my-2" href='/ima-chat-top' role="button") 今だけチャット
+      span(class="mx-2") 見てほしい度：
+        span(class="star5_rating" data-rate="4")
     li
       a(class="btn btn-primary my-2" href='https://github.com/ozuaq/word-emotion-restapi' role="button") Word emotion REST API
+      span(class="mx-2") 見てほしい度：
+        span(class="star5_rating" data-rate="3")
+  h2 作成中アプリ
+  ul
+    li
+      a(class="btn btn-primary my-2" href='https://github.com/ozuaq/yappari_zimoto_ai' role="button") やっぱり地元愛
+      span(class="mx-2") 見てほしい度：
+        span(class="star5_rating" data-rate="5")
+    li
+      a(class="btn btn-primary my-2" href='https://github.com/takumi765/review_test_app' role="button") 復習テストアプリ
+      span(class="mx-2") 見てほしい度：
+        span(class="star5_rating" data-rate="4")
+  h2 大学
+  ul
+    li
+      a(class="btn btn-primary my-2" href='/research' role="button") 研究
+      span(class="mx-2") 見てほしい度：
+        span(class="star5_rating" data-rate="5")
